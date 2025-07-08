@@ -40,6 +40,15 @@ class StajRaporlama {
                 this.updatePreview();
             }
         });
+
+        // Textarea boyut değişikliklerini dinle
+        const textarea = document.getElementById('reportContent');
+        const resizeObserver = new ResizeObserver(() => {
+            if (this.isPreviewMode) {
+                this.syncPreviewHeight();
+            }
+        });
+        resizeObserver.observe(textarea);
     }
 
     setCurrentDate() {
@@ -149,9 +158,21 @@ class StajRaporlama {
             preview.style.display = 'block';
             textarea.style.width = '50%';
             this.updatePreview();
+            this.syncPreviewHeight();
         } else {
             preview.style.display = 'none';
             textarea.style.width = '100%';
+        }
+    }
+
+    syncPreviewHeight() {
+        const textarea = document.getElementById('reportContent');
+        const preview = document.getElementById('preview');
+        
+        if (this.isPreviewMode) {
+            // Textarea'nın yüksekliğini önizleme paneline uygula
+            const textareaHeight = textarea.offsetHeight;
+            preview.style.height = textareaHeight + 'px';
         }
     }
 
