@@ -1,8 +1,16 @@
-# Staj Günlük Raporlama Otomasyonu
+# Staj Günlük Raporlama Otomasyonu / Internship Daily Reporting Automation
+
+## 📖 Descriptions / Açıklamalar
+
+**[🇹🇷 Türkçe](#tr---türkçe-açıklama)** | **[🇬🇧 English](#en---english-description)**
+
+---
+
+## [TR] - Türkçe Açıklama
 
 Bu proje, staj süresince yapılan günlük aktiviteleri kolayca raporlayabilmek için geliştirilmiş bir web uygulamasıdır.
 
-## 🎯 Özellikler
+### 🎯 Özellikler
 
 ### ✨ Temel Özellikler
 - **Kullanıcı Dostu Arayüz**: Modern ve responsive tasarım
@@ -176,5 +184,178 @@ Bu proje eğitim amaçlı geliştirilmiştir ve serbest kullanım için sunulmak
 
 ---
 
-**Son güncelleme**: 8 Temmuz 2025  
-**Versiyon**: 1.0.0
+## [EN] - English Description
+
+This project is a web application developed to easily report daily activities during internship period.
+
+### 🎯 Features
+
+#### ✨ Core Features
+- **User-Friendly Interface**: Modern and responsive design
+- **Automatic Dating**: Current date is automatically selected
+- **Historical Entry**: You can add reports for past dates
+- **Markdown Support**: Rich text formatting
+- **Real-Time Preview**: See your text instantly as you type
+- **Keyboard Shortcuts**: For quick formatting
+
+#### 📝 Markdown Editor Features
+- **Bold Text** (`Ctrl+B` or **B** button)
+- **Italic Text** (`Ctrl+I` or *I* button)
+- **Header Formatting** (## button)
+- **List Creation** (list button)
+- **Code Blocks** (code button)
+- **Link Addition** (`Ctrl+K` or link button)
+- **Live Preview** (eye button)
+
+#### 💾 File Management
+- **Automatic File Naming**: In `DD_MM_YY_title.md` format
+- **Automatic Download**: Reports are automatically downloaded to your computer
+- **Local Storage**: Your reports are stored in the browser
+- **Multiple Export Options**: Individual or bulk export
+
+### 🚀 Installation and Usage
+
+#### Quick Start
+1. Open the `index.html` file in any web browser
+2. Fill in the date, title, and content fields
+3. Click the "Save Report" button
+4. The file will be automatically downloaded
+
+#### File Structure
+```
+📁 Staj Takip/
+├── 📄 index.html          # Main application file
+├── 📄 styles.css          # Style file
+├── 📄 script.js           # JavaScript logic
+├── 📄 README.md           # This file
+└── 📁 reports/            # For downloaded reports (optional)
+```
+
+### 📋 Usage Guide
+
+#### 1. Creating a New Report
+1. **Select Date**: Today's date is selected by default
+2. **Enter Title**: Write a descriptive title for the report
+3. **Write Content**: Write your daily activities in Markdown format
+4. **Save**: Click the "Save Report" button
+
+#### 2. Using Markdown
+```markdown
+## Today's Tasks
+- **Important**: Project documentation completed
+- *Note*: Code review conducted
+- `bug fix` operations completed
+
+### Learnings
+> Learned a new framework today
+
+```python
+def hello():
+    print("Hello World!")
+```
+```
+
+#### 3. Managing Reports
+- **View**: See existing reports in the right panel
+- **Download**: Re-download any report
+- **Edit**: Load the report into the form for editing
+- **Delete**: Remove unwanted reports
+
+### ⌨️ Keyboard Shortcuts
+
+| Shortcut | Description |
+|----------|-------------|
+| `Ctrl+B` | Bold text |
+| `Ctrl+I` | Italic text |
+| `Ctrl+K` | Add link |
+
+### 🔧 Advanced Features
+
+#### Console Commands
+You can use the following commands by opening the browser's developer console (`F12`):
+
+```javascript
+// Combine all reports into one file
+stajApp.exportAll()
+
+// Export reports in JSON format
+stajApp.exportJSON()
+
+// Display statistics
+stajApp.stats()
+
+// Delete all reports (USE CAREFULLY!)
+stajApp.clearAll()
+```
+
+#### File Format
+Each report is saved in the following format:
+
+```markdown
+# Report Title
+
+**Date:** July 8, 2025  
+**Created:** 08.07.2025 14:30:25
+
+---
+
+Report content goes here...
+
+---
+
+*This report was created with the Internship Daily Reporting Application.*
+```
+
+### 🎨 Customization
+
+#### Style Changes
+You can change colors by editing CSS variables in the `styles.css` file:
+
+```css
+:root {
+    --primary-color: #2563eb;    /* Primary color */
+    --success-color: #10b981;    /* Success color */
+    --danger-color: #ef4444;     /* Danger color */
+}
+```
+
+### 📱 Responsive Design
+
+The application is designed for optimal performance on all devices:
+- **Desktop**: Full-featured experience
+- **Tablet**: Compatible layout
+- **Mobile**: Touch-optimized interface
+
+### 🔒 Data Security
+
+- All data is stored in your browser's local storage
+- No data is sent to the internet
+- Data remains only on your computer
+- You can optionally backup data in JSON format
+
+### 🛠️ Technical Details
+
+#### Technologies Used
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling and responsive design
+- **Vanilla JavaScript**: Lightweight and fast
+- **Marked.js**: Markdown parsing
+- **Font Awesome**: Icons
+- **Local Storage**: Data storage
+
+#### Browser Support
+- Chrome 60+
+- Firefox 55+
+- Safari 11+
+- Edge 79+
+
+### 📞 Support
+
+If you experience any issues or have suggestions:
+- Check the browser console outputs
+- Open developer tools with `F12` and examine errors
+- Make sure your browser is up to date
+
+### 📄 License
+
+This project is developed for educational purposes and is provided for free use.
