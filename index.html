@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staj Günlük Raporlama</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-calendar-alt"></i> Staj Günlük Raporlama</h1>
+            <p>Günlük aktivitelerinizi kolayca raporlayın</p>
+        </header>
+
+        <div class="main-content">
+            <div class="form-section">
+                <form id="reportForm" class="report-form">
+                    <div class="form-group">
+                        <label for="reportDate">
+                            <i class="fas fa-calendar"></i> Rapor Tarihi
+                        </label>
+                        <input type="date" id="reportDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reportTitle">
+                            <i class="fas fa-heading"></i> Başlık
+                        </label>
+                        <input type="text" id="reportTitle" placeholder="Günlük rapor başlığı..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reportContent">
+                            <i class="fas fa-edit"></i> Günlük Aktiviteler (Markdown Destekli)
+                        </label>
+                        <div class="editor-container">
+                            <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn" data-action="bold" title="Kalın (Ctrl+B)">
+                                    <i class="fas fa-bold"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="italic" title="İtalik (Ctrl+I)">
+                                    <i class="fas fa-italic"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="heading" title="Başlık">
+                                    <i class="fas fa-heading"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="list" title="Liste">
+                                    <i class="fas fa-list-ul"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="code" title="Kod">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="link" title="Link">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="preview" title="Önizleme">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="editor-content">
+                                <textarea id="reportContent" placeholder="Bugün ne yaptınız? (Markdown formatında yazabilirsiniz)&#10;&#10;Örnek:&#10;## Yapılan İşler&#10;- Proje dokümantasyonu hazırlandı&#10;- **Önemli:** Kod review yapıldı&#10;- `bug fix` işlemleri tamamlandı"></textarea>
+                                <div id="preview" class="preview-pane" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Raporu Kaydet
+                        </button>
+                        <button type="button" id="clearForm" class="btn btn-secondary">
+                            <i class="fas fa-trash"></i> Temizle
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="reports-section">
+                <h2><i class="fas fa-folder-open"></i> Kaydedilen Raporlar</h2>
+                <div id="reportsList" class="reports-list">
+                    <!-- Raporlar buraya dinamik olarak eklenecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
