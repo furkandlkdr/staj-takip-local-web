@@ -30,18 +30,39 @@
     --border-radius-lg: 12px;
 }
 
+/* Dark Theme */
+[data-theme="dark"] {
+    --light-bg: #0f172a;
+    --white: #1e293b;
+    --gray-100: #1e293b;
+    --gray-200: #334155;
+    --gray-300: #475569;
+    --gray-400: #64748b;
+    --gray-500: #94a3b8;
+    --gray-600: #cbd5e1;
+    --gray-700: #e2e8f0;
+    --gray-800: #f1f5f9;
+    --gray-900: #f8fafc;
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+    color-scheme: dark;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--gray-700);
     background: linear-gradient(135deg, var(--light-bg) 0%, var(--gray-100) 100%);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    flex: 1;
 }
 
 /* Header Stilleri */
@@ -54,11 +75,18 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
 .header h1 {
     color: var(--primary-color);
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin: 0;
 }
 
 .header h1 i {
@@ -68,6 +96,24 @@ body {
 .header p {
     color: var(--gray-500);
     font-size: 1.1rem;
+}
+
+.theme-toggle {
+    background: var(--gray-100);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--gray-600);
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
 }
 
 /* Ana İçerik */
@@ -117,6 +163,8 @@ body {
     border-radius: var(--border-radius);
     font-size: 1rem;
     transition: all 0.3s ease;
+    background: var(--white);
+    color: var(--gray-700);
 }
 
 .form-group input[type="text"]:focus,
@@ -124,6 +172,50 @@ body {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Dark mode için input stilleri */
+[data-theme="dark"] .form-group input[type="text"],
+[data-theme="dark"] .form-group input[type="date"] {
+    background: var(--gray-200);
+    color: var(--gray-800);
+    border-color: var(--gray-300);
+    color-scheme: dark;
+}
+
+[data-theme="dark"] .form-group input[type="text"]:focus,
+[data-theme="dark"] .form-group input[type="date"]:focus {
+    background: var(--gray-100);
+    color: var(--gray-900);
+}
+
+[data-theme="dark"] .form-group input[type="text"]::placeholder {
+    color: var(--gray-500);
+}
+
+/* Date input için özel stil */
+[data-theme="dark"] .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+[data-theme="dark"] .form-group input[type="date"]::-webkit-datetime-edit {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .form-group input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    background: var(--gray-200);
+}
+
+[data-theme="dark"] .form-group input[type="date"]::-webkit-datetime-edit-text {
+    color: var(--gray-600);
+}
+
+[data-theme="dark"] .form-group input[type="date"]::-webkit-datetime-edit-month-field,
+[data-theme="dark"] .form-group input[type="date"]::-webkit-datetime-edit-day-field,
+[data-theme="dark"] .form-group input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--gray-800);
+    background: transparent;
 }
 
 /* Editor Container */
@@ -190,10 +282,21 @@ body {
     font-size: 0.9rem;
     line-height: 1.5;
     background: var(--white);
+    color: var(--gray-700);
 }
 
 #reportContent:focus {
     outline: none;
+}
+
+/* Dark mode için textarea stilleri */
+[data-theme="dark"] #reportContent {
+    background: var(--gray-200);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] #reportContent::placeholder {
+    color: var(--gray-500);
 }
 
 .preview-pane {
@@ -203,6 +306,14 @@ body {
     background: var(--gray-50);
     border-left: 1px solid var(--gray-200);
     overflow-y: auto;
+    color: var(--gray-700);
+}
+
+/* Dark mode için preview pane */
+[data-theme="dark"] .preview-pane {
+    background: var(--gray-300);
+    color: var(--gray-800);
+    border-left-color: var(--gray-400);
 }
 
 .preview-pane h1, .preview-pane h2, .preview-pane h3 {
@@ -235,6 +346,27 @@ body {
     border-left: 4px solid var(--primary-color);
     padding-left: 1rem;
     margin: 1rem 0;
+    color: var(--gray-600);
+}
+
+/* Dark mode için preview içerik stilleri */
+[data-theme="dark"] .preview-pane h1, 
+[data-theme="dark"] .preview-pane h2, 
+[data-theme="dark"] .preview-pane h3 {
+    color: var(--gray-900);
+}
+
+[data-theme="dark"] .preview-pane code {
+    background: var(--gray-400);
+    color: var(--gray-900);
+}
+
+[data-theme="dark"] .preview-pane pre {
+    background: var(--gray-900);
+    color: var(--gray-100);
+}
+
+[data-theme="dark"] .preview-pane blockquote {
     color: var(--gray-600);
 }
 
@@ -367,7 +499,7 @@ body {
     background: #dc2626;
 }
 
-/* Bildirim */
+/* Notification */
 .notification {
     position: fixed;
     top: 20px;
@@ -400,6 +532,43 @@ body {
     background: var(--warning-color);
 }
 
+/* Footer */
+.footer {
+    background: var(--light-bg);
+    border-top: 1px solid var(--gray-200);
+    margin-top: 2rem;
+    box-shadow: 0 -2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 20px;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.footer-container p {
+    margin: 0.25rem 0;
+}
+
+.footer-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    color: var(--primary-dark);
+    text-decoration-color: var(--primary-dark);
+    text-decoration-thickness: 2px;
+}
+
 /* Responsive Tasarım */
 @media (max-width: 768px) {
     .container {
@@ -413,6 +582,11 @@ body {
     
     .header h1 {
         font-size: 2rem;
+    }
+    
+    .header-top {
+        flex-direction: column;
+        gap: 1rem;
     }
     
     .form-section,
@@ -455,5 +629,14 @@ body {
     
     .toolbar-btn {
         padding: 0.375rem;
+    }
+    
+    .footer-container {
+        padding: 1rem 10px;
+        font-size: 0.8rem;
+    }
+    
+    .footer-container p {
+        margin: 0.15rem 0;
     }
 }

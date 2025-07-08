@@ -12,6 +12,7 @@ class StajRaporlama {
         this.setCurrentDate();
         this.renderReports();
         this.setupKeyboardShortcuts();
+        this.loadTheme();
     }
 
     setupEventListeners() {
@@ -24,6 +25,11 @@ class StajRaporlama {
         // Form temizle
         document.getElementById('clearForm').addEventListener('click', () => {
             this.clearForm();
+        });
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            this.toggleTheme();
         });
 
         // Toolbar butonları
@@ -55,6 +61,9 @@ class StajRaporlama {
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
         document.getElementById('reportDate').value = formattedDate;
+        
+        // Footer'da güncel yılı göster
+        document.getElementById('currentYear').textContent = today.getFullYear();
     }
 
     setupKeyboardShortcuts() {
@@ -423,6 +432,28 @@ ${report.content}
         const fileName = `staj-raporlari-tumu-${new Date().toISOString().split('T')[0]}.md`;
         this.downloadFile(combinedContent, fileName);
         this.showNotification('Tüm raporlar tek dosyada birleştirildi!', 'success');
+    }
+
+    // Tema fonksiyonları
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        const themeIcon = document.querySelector('#themeToggle i');
+        themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        
+        this.showNotification(`${newTheme === 'dark' ? 'Koyu' : 'Açık'} tema aktif`, 'success');
+    }
+
+    loadTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        const themeIcon = document.querySelector('#themeToggle i');
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 }
 
